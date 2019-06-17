@@ -1,0 +1,24 @@
+language: node_js
+node_js:
+- '11'
+install:
+- travis_retry npm ci
+script:
+- npm run lint
+- npm run build
+- npm run build-app
+deploys:
+- provider: npm
+  email: stefandesu@exo.pm
+  api_key:
+    secure: FkjqtoP84F0C5+5b9VCoRYBFoFmVdgz+S1RB6MfKKqEkC08TQvJstFDz46BzyaBemtlGr9jSGlOcIT0nNXyazzMqIxH76L5CGJfiyc4pPW/HENTfzxrQJysi6LL1TOKogAnetZ07m33Nk2+MGwVcQauBGkuxUvVnVes/HXyV1tox/U6MlG0qOMxLm5V2iRQ5QuI1iUP7V5TzbrkgEImT6ODb/r+dH126LIsfCNmvW4vyTCBcf/4hB2j0KOGiiDCdesY4F/olQeJiIN5vm/bz0YDf+4F+2zq0X/KEl2oFxf1KDIKEo2PgKotcazhDAiDGpksWvRBZ8F6zbX7DcV3O5iGuxQzEF/O6hBykrzbOQ4GIiuOstKRbu/uUoa7iIZsyzG6siofUIcHPKl+CUF8d120wHjbaG5dNWkxYdXcMmEH9nLw5JhmuagThJHIYcHsszYkdWKsh+SwdSfOTtaHRvuE8h/oflQm7EI4pUmFqM14CGrKU+yHVq5J+1HQKXg5R+mSbaJ/K2+1518bdt1tsFLkw6q5fv5MmGJ3Gw/kRP00ofa0H+VsoBJRyhu/IV+6PJcG7oBUFOpCp65KgsUQMA2ICtBhNaYaoBbNALfmIpQuT/04Wf4UVmylHw9spzrqtMvlba2Vm4NVrGCKPKDyZ8PGiRH9ca1OQsmujaea0j/M=
+  on:
+    tags: true
+    repo: stefandesu/cocoda-vue-tabs
+- provider: pages
+  local_dir: dist/
+  skip_cleanup: true
+  github_token: "$GITHUB_TOKEN"
+  keep_history: true
+  on:
+    branch: master
