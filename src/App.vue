@@ -12,6 +12,10 @@
       <example-03 />
       <h3>Tabs with fixed width and height (demonstrates scrolling)</h3>
       <example-04 />
+      <h3>Simple table in small with borders</h3>
+      <example-05 />
+      <h3>Simple table in large with borders</h3>
+      <example-06 />
     </div>
   </div>
 </template>
@@ -21,6 +25,8 @@ import Example01 from "./Example01"
 import Example02 from "./Example02"
 import Example03 from "./Example03"
 import Example04 from "./Example04"
+import Example05 from "./Example05"
+import Example06 from "./Example06"
 
 export default {
   name: "App",
@@ -29,6 +35,8 @@ export default {
     Example02,
     Example03,
     Example04,
+    Example05,
+    Example06,
   },
 }
 </script>
