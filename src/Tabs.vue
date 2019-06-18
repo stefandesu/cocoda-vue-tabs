@@ -1,5 +1,9 @@
 <template>
-  <div class="cocoda-vue-tabs">
+  <div
+    class="cocoda-vue-tabs"
+    :class="{
+      'cocoda-vue-tabs-borders': borders
+    }">
     <div class="cocoda-vue-tabs-header">
       <div
         v-for="(tab, index) in tabs"
@@ -61,6 +65,15 @@ export default {
     fillMinWidth: {
       type: String,
       default: "0",
+    },
+    /**
+     * If true, borders will be shown around the content area.
+     *
+     * Override the CSS class `cocoda-vue-tabs-borders` to adjust borders.
+     */
+    borders: {
+      type: Boolean,
+      default: false,
     },
   },
   data () {
@@ -124,6 +137,11 @@ export default {
 .cocoda-vue-tabs {
   display: flex;
   flex-direction: column;
+}
+
+.cocoda-vue-tabs-borders {
+  border: 1px solid rgba(132,141,149,0.2);
+  border-radius: 8px;
 }
 
 /* Fixed header classes */
