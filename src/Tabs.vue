@@ -177,6 +177,9 @@ export default {
 .cocoda-vue-tabs-header-item:first-child {
   margin-left: 0;
 }
+.cocoda-vue-tabs-header-item:last-child {
+  margin-right: 0;
+}
 .cocoda-vue-tabs-header-item:hover {
   cursor: pointer;
 }
