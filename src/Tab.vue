@@ -59,8 +59,16 @@ export default {
 /* Content classes */
 .cocoda-vue-tabs-content {
   flex: 1;
-  padding: 15px 10px 10px 10px;
   overflow: scroll;
+}
+.cocoda-vue-tabs-sm .cocoda-vue-tabs-content {
+  padding: 10px 8px 8px 8px;
+}
+.cocoda-vue-tabs-md .cocoda-vue-tabs-content {
+  padding: 13px 10px 10px 10px;
+}
+.cocoda-vue-tabs-lg .cocoda-vue-tabs-content {
+  padding: 16px 15px 15px 15px;
 }
 
 </style>

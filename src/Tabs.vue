@@ -2,7 +2,8 @@
   <div
     class="cocoda-vue-tabs"
     :class="{
-      'cocoda-vue-tabs-borders': borders
+      'cocoda-vue-tabs-borders': borders,
+      [`cocoda-vue-tabs-${_size}`]: true,
     }">
     <div class="cocoda-vue-tabs-header">
       <div
@@ -75,6 +76,13 @@ export default {
       type: Boolean,
       default: false,
     },
+    /**
+     * Size of table. One of `sm`, `md`, `lg`.
+     */
+    size: {
+      type: String,
+      default: null,
+    },
   },
   data () {
     return {
@@ -84,7 +92,12 @@ export default {
     }
   },
   computed: {
-
+    _size() {
+      if (["sm", "md", "lg"].includes(this.size)) {
+        return this.size
+      }
+      return "md"
+    },
   },
   watch: {
     tabs(tabs) {
@@ -159,9 +172,6 @@ export default {
   box-sizing: content-box;
   position: relative;
   margin: 0 5px;
-  padding: 0 10px;
-  height: 32px;
-  line-height: 32px;
   border-top: 3px solid transparent;
 }
 .cocoda-vue-tabs-header-item:first-child {
@@ -173,14 +183,10 @@ export default {
 
 /* Flexible header classes */
 .cocoda-vue-tabs-header-item-inactive {
-  padding-bottom: 3px;
   color: #848d95;
 }
 .cocoda-vue-tabs-header-item-inactive:hover {
   background-color: rgba(132,141,149,0.05);
-}
-.cocoda-vue-tabs-header-item-active {
-  border-bottom: 3px solid transparent;
 }
 .cocoda-vue-tabs-header-item-active:hover {
   cursor: auto;
@@ -194,5 +200,47 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.cocoda-vue-tabs-sm {
+  font-size: 0.85rem;
+}
+.cocoda-vue-tabs-md {
+  font-size: 1rem;
+}
+.cocoda-vue-tabs-lg {
+  font-size: 1.2rem;
+}
+.cocoda-vue-tabs-sm .cocoda-vue-tabs-header-item {
+  height: 24px;
+  line-height: 24px;
+  padding: 0 8px;
+}
+.cocoda-vue-tabs-md .cocoda-vue-tabs-header-item {
+  height: 32px;
+  line-height: 32px;
+  padding: 0 10px;
+}
+.cocoda-vue-tabs-lg .cocoda-vue-tabs-header-item {
+  height: 48px;
+  line-height: 48px;
+  padding: 0 15px;
+}
+.cocoda-vue-tabs-sm .cocoda-vue-tabs-header-item-inactive {
+  padding-bottom: 2px;
+}
+.cocoda-vue-tabs-md .cocoda-vue-tabs-header-item-inactive {
+  padding-bottom: 3px;
+}
+.cocoda-vue-tabs-lg .cocoda-vue-tabs-header-item-inactive {
+  padding-bottom: 5px;
+}
+.cocoda-vue-tabs-sm .cocoda-vue-tabs-header-item-active {
+  border-bottom: 2px solid transparent;
+}
+.cocoda-vue-tabs-md .cocoda-vue-tabs-header-item-active {
+  border-bottom: 3px solid transparent;
+}
+.cocoda-vue-tabs-lg .cocoda-vue-tabs-header-item-active {
+  border-bottom: 5px solid transparent;
 }
 </style>
