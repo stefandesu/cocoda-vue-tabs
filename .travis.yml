@@ -5,8 +5,9 @@ install:
 - travis_retry npm ci
 script:
 - npm run lint
-- npm run build
 - npm run build-app
+- mv dist dist-pages
+- npm run build
 deploy:
 - provider: npm
   email: stefandesu@exo.pm
@@ -16,7 +17,7 @@ deploy:
     tags: true
     repo: stefandesu/cocoda-vue-tabs
 - provider: pages
-  local_dir: dist/
+  local_dir: dist-pages/
   skip_cleanup: true
   github_token: "$GITHUB_TOKEN"
   keep_history: true
