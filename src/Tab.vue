@@ -32,6 +32,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    hidden: {
+      type: Boolean,
+      default: false,
+    },
   },
   data () {
     return {

@@ -4,6 +4,7 @@
     <div class="cocoda-vue-tabs-header">
       <div
         v-for="(tab, index) in tabs"
+        v-show="!hiddenTabs[index]"
         :key="`cocoda-vue-tabs-${index}`"
         class="cocoda-vue-tabs-header-item"
         :class="{
@@ -114,6 +115,9 @@ export default {
       }
       return classes
     },
+    hiddenTabs() {
+      return this.tabs.map(tab => tab.hidden)
+    },
   },
   watch: {
     tabs(tabs) {
@@ -124,6 +128,9 @@ export default {
     },
     value(index) {
       this.activateTab(index)
+    },
+    hiddenTabs() {
+      this.activateTab(this.activeTabIndex)
     },
   },
   mounted () {
@@ -142,9 +149,24 @@ export default {
     },
     activateTab (index) {
       if (this.tabs.length > 0) {
+        // Cap index at count of tabs
         if (index >= this.tabs.length) {
           index = this.tabs.length - 1
         }
+        // Switch to nearest non-hidden tab
+        let diff = 0
+        while (index - diff > 0 || index + diff < this.hiddenTabs.length) {
+          if (this.hiddenTabs[index + diff] === false) {
+            index = index + diff
+            break
+          }
+          if (this.hiddenTabs[index - diff] === false) {
+            index = index - diff
+            break
+          }
+          diff += 1
+        }
+        // Deactive all tabs
         for (let tab of this.tabs) {
           tab.isActive = false
         }

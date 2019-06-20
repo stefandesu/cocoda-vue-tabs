@@ -10,12 +10,19 @@
     <button @click="jumpToRandom">
       Jump to random tab
     </button>
+    <button @click="hiddenTabs.push(tabIndex)">
+      Hide current tab
+    </button>
+    <button @click="hiddenTabs = []">
+      Unhide all tab
+    </button>
     <tabs
       v-model="tabIndex"
       @change="tabChanged">
       <tab
-        v-for="tab in tabs"
+        v-for="(tab, index) in tabs"
         :key="`example02-${tab}`"
+        :hidden="hiddenTabs.includes(index)"
         :title="tab">
         Content of {{ tab }}
       </tab>
@@ -42,6 +49,7 @@ export default {
     return {
       tabIndex: 0,
       tabs: ["A tab", "Another tab"],
+      hiddenTabs: [],
       tabCount: 0,
     }
   },
