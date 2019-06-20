@@ -10,7 +10,7 @@
       <example-02 />
       <h3>Tabs with fill and variable height content</h3>
       <example-03 />
-      <h3>Tabs with fixed width and height (demonstrates scrolling)</h3>
+      <h3>Tabs with fixed width and height and bottom border (demonstrates scrolling)</h3>
       <example-04 />
       <h3>Simple table in small with borders</h3>
       <example-05 />

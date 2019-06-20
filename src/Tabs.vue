@@ -1,10 +1,6 @@
 <template>
   <div
-    class="cocoda-vue-tabs"
-    :class="{
-      'cocoda-vue-tabs-borders': borders,
-      [`cocoda-vue-tabs-${_size}`]: true,
-    }">
+    :class="rootClasses">
     <div class="cocoda-vue-tabs-header">
       <div
         v-for="(tab, index) in tabs"
@@ -68,12 +64,12 @@ export default {
       default: "0",
     },
     /**
-     * If true, borders will be shown around the content area.
+     * If true, borders will be shown. Alternatively, you can provide a string that contains one or more of "top", "right", "bottom", "left" for partial borders.
      *
-     * Override the CSS class `cocoda-vue-tabs-borders` to adjust borders.
+     * Override the CSS class `cocoda-vue-tabs-border-{all|top|right|bottom|left}` to adjust borders.
      */
     borders: {
-      type: Boolean,
+      type: [Boolean, String],
       default: false,
     },
     /**
@@ -97,6 +93,26 @@ export default {
         return this.size
       }
       return "md"
+    },
+    rootClasses() {
+      let borderClassPrefix = "cocoda-vue-tabs-border-"
+      let classes = {
+        "cocoda-vue-tabs": true,
+        [`cocoda-vue-tabs-${this._size}`]: true,
+      }
+      if (this.borders === false) {
+        return classes
+      }
+      if (this.borders === true) {
+        classes[`${borderClassPrefix}all`] = true
+        return classes
+      }
+      for (let side of ["top", "right", "bottom", "left"]) {
+        if (this.borders.includes(side)) {
+          classes[`${borderClassPrefix}${side}`] = true
+        }
+      }
+      return classes
     },
   },
   watch: {
@@ -152,9 +168,21 @@ export default {
   flex-direction: column;
 }
 
-.cocoda-vue-tabs-borders {
+.cocoda-vue-tabs-border-all {
   border: 1px solid rgba(132,141,149,0.2);
   border-radius: 8px;
+}
+.cocoda-vue-tabs-border-top {
+  border-top: 1px solid rgba(132,141,149,0.2);
+}
+.cocoda-vue-tabs-border-right {
+  border-right: 1px solid rgba(132,141,149,0.2);
+}
+.cocoda-vue-tabs-border-bottom {
+  border-bottom: 1px solid rgba(132,141,149,0.2);
+}
+.cocoda-vue-tabs-border-left {
+  border-left: 1px solid rgba(132,141,149,0.2);
 }
 
 /* Fixed header classes */
