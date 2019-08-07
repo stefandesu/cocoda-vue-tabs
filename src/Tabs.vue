@@ -223,6 +223,7 @@ export default {
   position: relative;
   margin: 0 5px;
   border-top: 3px solid transparent;
+  font-weight: bold;
 }
 .cocoda-vue-tabs-header-item:first-child {
   margin-left: 0;
@@ -239,6 +240,9 @@ export default {
   color: #848d95;
 }
 .cocoda-vue-tabs-header-item-inactive:hover {
+  background-color: rgba(132,141,149,0.05);
+}
+.cocoda-vue-tabs-header-item-active {
   background-color: rgba(132,141,149,0.05);
 }
 .cocoda-vue-tabs-header-item-active:hover {
