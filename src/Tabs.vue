@@ -1,35 +1,28 @@
 <template>
   <div
     :class="rootClasses">
-    <div
-      :class="{
-        'cocoda-vue-tabs-header-wrap': !headerScroll,
-        'cocoda-vue-tabs-header-scroll': headerScroll,
-      }"
-      class="cocoda-vue-tabs-header">
-      <div>
-        <div
-          v-for="(tab, index) in tabs"
-          v-show="!hiddenTabs[index]"
-          :key="`cocoda-vue-tabs-${index}`"
-          class="cocoda-vue-tabs-header-item"
-          :class="{
-            'cocoda-vue-tabs-header-item-active': tab.isActive,
-            'cocoda-vue-tabs-header-item-inactive': !tab.isActive,
-            'cocoda-vue-tabs-header-item-fill': fill,
-          }"
-          :style="{
-            'flex-basis': fill ? fillMinWidth : 'auto',
-            'border-bottom-color': activeColor,
-          }"
-          @click="activateTab(index)">
-          <slot
-            :tab="tab"
-            :index="index"
-            name="title">
-            {{ tab.title }}
-          </slot>
-        </div>
+    <div class="cocoda-vue-tabs-header">
+      <div
+        v-for="(tab, index) in tabs"
+        v-show="!hiddenTabs[index]"
+        :key="`cocoda-vue-tabs-${index}`"
+        class="cocoda-vue-tabs-header-item"
+        :class="{
+          'cocoda-vue-tabs-header-item-active': tab.isActive,
+          'cocoda-vue-tabs-header-item-inactive': !tab.isActive,
+          'cocoda-vue-tabs-header-item-fill': fill,
+        }"
+        :style="{
+          'flex-basis': fill ? fillMinWidth : 'auto',
+          'border-bottom-color': activeColor,
+        }"
+        @click="activateTab(index)">
+        <slot
+          :tab="tab"
+          :index="index"
+          name="title">
+          {{ tab.title }}
+        </slot>
       </div>
     </div>
     <slot />
@@ -86,13 +79,6 @@ export default {
     size: {
       type: String,
       default: null,
-    },
-    /**
-     * If true, the tab list will scroll instead of wrap.
-     */
-    headerScroll: {
-      type: Boolean,
-      default: false,
     },
   },
   data () {
@@ -224,27 +210,13 @@ export default {
 /* Fixed header classes */
 .cocoda-vue-tabs-header {
   flex: none;
+  display: flex;
+  flex-wrap: wrap;
   user-select: none;
   margin: 0;
   padding: 0;
   border-bottom: 1px solid rgba(132,141,149,0.2);
   margin-bottom: -1px;
-  position: relative;
-}
-.cocoda-vue-tabs-header-wrap > div {
-  display: flex;
-  flex-wrap: wrap;
-}
-.cocoda-vue-tabs-header-scroll {
-  overflow-x: auto;
-}
-.cocoda-vue-tabs-header-scroll > div {
-  width: 100%;
-  white-space: nowrap;
-}
-.cocoda-vue-tabs-header-scroll > div > div {
-  display: inline-block;
-  white-space: nowrap;
 }
 .cocoda-vue-tabs-header-item {
   box-sizing: content-box;
