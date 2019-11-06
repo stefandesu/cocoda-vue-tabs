@@ -221,7 +221,7 @@ export default {
 .cocoda-vue-tabs-header-item {
   box-sizing: content-box;
   position: relative;
-  margin: 0 5px;
+  margin: 0 2px;
   border-top: 3px solid transparent;
   font-weight: bold;
 }
