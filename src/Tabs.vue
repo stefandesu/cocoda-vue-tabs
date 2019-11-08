@@ -155,7 +155,7 @@ export default {
         }
         // Switch to nearest non-hidden tab
         let diff = 0
-        while (index - diff > 0 || index + diff < this.hiddenTabs.length) {
+        while (index - diff >= 0 || index + diff < this.hiddenTabs.length) {
           if (this.hiddenTabs[index + diff] === false) {
             index = index + diff
             break
