@@ -26,7 +26,7 @@
         :title="tab">
         Content of {{ tab }}
       </tab>
-      <template v-slot:title="slotProps">
+      <template #title="slotProps">
         {{ slotProps.tab.title }}
         <div
           class="closeButton"
