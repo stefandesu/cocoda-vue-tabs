@@ -21,12 +21,12 @@
 </template>
 
 <script>
-import Example01 from "./Example01"
-import Example02 from "./Example02"
-import Example03 from "./Example03"
-import Example04 from "./Example04"
-import Example05 from "./Example05"
-import Example06 from "./Example06"
+import Example01 from "./Example01.vue"
+import Example02 from "./Example02.vue"
+import Example03 from "./Example03.vue"
+import Example04 from "./Example04.vue"
+import Example05 from "./Example05.vue"
+import Example06 from "./Example06.vue"
 
 export default {
   name: "App",
