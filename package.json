@@ -9,11 +9,7 @@
   },
   "license": "MIT",
   "main": "src/cocoda-vue-tabs.js",
-  "module": "dist/cocoda-vue-tabs.common.js",
   "unpkg": "dist/cocoda-vue-tabs.umd.min.js",
-  "browser": {
-    "./sfc": "src/cocoda-vue-tabs.js"
-  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build --target lib --name cocoda-vue-tabs src/cocoda-vue-tabs.js",
